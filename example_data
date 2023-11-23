@@ -23,27 +23,27 @@ INSERT INTO contact_detail (contact_detail_id, value) VALUES
 INSERT INTO person (person_id, person_number, first_name, last_name) VALUES
 
 --Students--
-(10, '900302', 'Elijah', 'Martinez'),
-(11, '910614', 'Grace', 'Hernandez'),
-(12, '920725', 'Alexander', 'Garcia'),
-(13, '000302', 'Ludwig', 'Martinez'),
-(14, '010614', 'Harry', 'Hernandez'),
-(15, '020725', 'Christoffer', 'Garcia'),
 
+(10, '900302-1234', 'Elijah', 'Martinez'),
+(11, '910614-5678', 'Grace', 'Hernandez'),
+(12, '920725-9012', 'Alexander', 'Garcia'),
+(13, '000302-3456', 'Ludwig', 'Martinez'),
+(14, '010614-7890', 'Harry', 'Hernandez'),
+(15, '020725-2345', 'Christoffer', 'Ga'),
 
 --Instructors--
-(20, '831108', 'Thomas', 'Rodriguez'),
-(21, '730508', 'Clara', 'Rodriguez'),
-(22, '630114', 'Peter', 'Rodriguez'),
-(23, '530314', 'Karl', 'Rodriguez'),
-
+(20, '831108-6789', 'Thomas', 'Rodriguez'),
+(21, '730508-1234', 'Clara', 'Rodriguez'),
+(22, '630114-5678', 'Peter', 'Rodriguez'),
+(23, '530314-9012', 'Karl', 'Rodriguez'),
 
 --Contact_person--
-(30, '801022', 'Elijah', 'Martinez'),
-(31, '800904', 'Grace', 'Hernandez'),
-(32, '80725', 'Stefan', 'Garcia'),
-(33, '800904', 'Bo', 'Hernandez'),
-(34, '80725', 'Mikael', 'Garcia');
+(30, '801022-4567', 'Elijah', 'Martinez'),
+(31, '800904-8901', 'Grace', 'Hernandez'),
+(32, '80725-2345', 'Stefan', 'Garcia'),
+(33, '800904-6789', 'Bo', 'Hernandez'),
+(34, '80725-1234', 'Mikael', 'Garcia');
+
 
 -- Exempeldata för Person_Contact_Detail Tabell (Many-to-Many relation mellan Person och Contact_Detail)
 INSERT INTO person_contact_detail (person_id, contact_detail_id) VALUES
@@ -138,7 +138,8 @@ INSERT INTO instrument_type (instrument_type_id, value) VALUES
 (1, 'Guitar'),
 (2, 'Piano'),
 (3, 'Violin'),
-(4, 'Drums');
+(4, 'Drums'),
+(5, 'Flute');
 
 
 -- Exempeldata för Instrument Tabell
@@ -149,10 +150,10 @@ INSERT INTO instrument (instrument_id, instrument_type_id, serial_number, brand,
 (304, 3, 'DEF456', 'Gibson', 7);
 
 -- Exempeldata för Rental Tabell
-INSERT INTO rental (student_id, instrument_id, start_date, end_date) VALUES
-(10, 301, '2023-11-15', '2023-11-30'),
-(11, 302, '2023-11-10', '2023-11-25'),
-(12, 303, '2023-11-20', '2023-12-05');
+INSERT INTO rental (student_id, instrument_id, start_date, end_date, rental_price) VALUES
+(10, 301, '2023-11-15', '2023-11-30', 50),
+(11, 302, '2023-11-10', '2023-11-25', 50),
+(12, 303, '2023-11-20', '2023-12-05', 50);
 
 
 -- Exempeldata för Can_Teach_Instrument Tabell
@@ -165,7 +166,6 @@ INSERT INTO can_teach_instrument (instructor_id, instrument_type_id) VALUES
 
 
 ------------------------------------------------------
-
 
 -- Exempeldata för Difficulty Tabell
 INSERT INTO difficulty (difficulty_id, value) VALUES
@@ -183,25 +183,25 @@ INSERT INTO genre_type (genre_type_id, value) VALUES
 
 -- Exempeldata för Pricing_Scheme Tabell
 INSERT INTO pricing_scheme (pricing_scheme_id, discount_percent, student_price, instructor_price) VALUES
-(1, 10.00, '50.00', '100.00'),
-(2, 15.00, '45.00', '95.00'),
-(3, 20.00, '40.00', '90.00'),
-(4, 12.50, '55.00', '80.00'),
-(5, 18.75, '48.75', '85.50');
+(1, 10.00, 50.00, 100.00),
+(2, 15.00, 45.00, 95.00),
+(3, 20.00, 40.00, 90.00),
+(4, 12.50, 55.00, 80.00),
+(5, 18.75, 48.75, 85.50);
 
 
 -- Exempeldata för Lesson Tabell
-INSERT INTO lesson (lesson_id, time, minimum_of_students, max_of_students, instructor_id) VALUES
-(401, '2023-11-17 10:00:00', 1, 1, 20),
-(402, '2023-11-18 15:30:00', 2, 6, 21),
-(403, '2023-11-19 09:00:00', 4, 10, 22);
+INSERT INTO lesson (lesson_id, start_time, end_time, minimum_of_students, max_of_students, instructor_id) VALUES
+(401, '2023-11-17 10:00:00', '2023-11-17 12:00:00', 1, 1, 20),
+(402, '2023-11-18 15:30:00', '2023-11-18 17:30:00', 2, 6, 21),
+(403, '2023-11-19 09:00:00', '2023-11-19 11:00:00', 4, 10, 22);
 
 
 -- Exempeldata för Lesson_Type Tabell
 INSERT INTO lesson_type (lesson_id, value, pricing_scheme_id, instrument_type_id, genre_type_id, difficulty_id) VALUES
 (401, 'Private', 	1, 		1, 		null,		1),
-(402, 'Group', 		2,		2, 		null, 		2),
-(403, 'Ensamble', 	3,		null, 	3, 			null);
+(402, 'Group', 		2,		5, 		null, 		2),
+(403, 'Ensamble', 	2,		null, 	3, 			null);
 
 
 -- Exempeldata för Lesson_Booking Tabell
